@@ -5,7 +5,7 @@
         padding: 0;
         box-sizing: border-box;
     }
-html, body
+html body
     {
         background-color: #056070;
         scroll-behavior: smooth;
@@ -14,12 +14,12 @@ html, body
 @font-face
     {
         font-family: 'Playfair';
-        src: url(PlayfairDisplay-VariableFont_wght.ttf);
+        src: url('policesFonts/PlayfairDisplay-VariableFont_wght.ttf');
     }
 @font-face
     {
         font-family: 'Andika';
-        src: url(Andika-Regular.ttf);
+        src: url('policesFonts/Andika-Regular.ttf');
     }
 
 a   {   text-decoration: none;  } 
@@ -75,7 +75,7 @@ section.navMenu>ul:nth-child(2)
 /***** HEADER *****/
 header
     {
-        background: url('LOGOANDPICS/SeamlessGeometricPattern.jpg');
+        background: url('picsMain/SeamlessGeometricPattern.jpg');
         background-position: center;
         background-attachment: fixed;
         min-width: 100%;
@@ -144,27 +144,95 @@ section.titres>hr
         margin: auto;
     }
 
+/* --------------------------------------------------------------------------------------- */
+/* CAROUSEL */
+/* --------------------------------------------------------------------------------------- */
 
-/***** CARROUSSEL *****/
-#carrousselContainer
+#carouselContainer
     {
+        width:   100vw;
+        height:  50vh;
         display: flex;
         justify-content: center;
+        align-items:     center;
+        flex-direction:  column;
+        background-color: #056070; 
     }
-.carroussel
+.carousel
     {
-        width: 60vw;
-        display: flex;
-        justify-content: space-between;
+        width:    960px;
+        height:   320px;
+        display:  flex;
+        justify-content: center;
+        align-items:     center;
+        background-color: #111;
+        overflow: hidden;
     }
-.carroussel>img
+div.carousel>div>img
     {
+        position: relative;
+        margin:   0 10px;
         width: 300px;
+        height: 300px;
         object-fit: cover;
     }
 
 
+/* --------------------------------------------------------------------------------------- */
+/* CAROUSEL ANIMATION */
+/* --------------------------------------------------------------------------------------- */
+/* translate 320px = img 300px + marginLeft 10px + marginRight 10px */
+
+.activeSlideLeft
+    {   animation: slideLeft 1.0s cubic-bezier(0.1, -0.1, 0.1, 1) forwards; }
+
+@keyframes slideLeft
+    {   100% { transform: translateX(-320px); }
+    }
+
+/* --------------------------------------------------------------------------------------- */
+/* RESPONSIVE CAROUSEL FOR TABLET */
+/* --------------------------------------------------------------------------------------- */
+/* @media tablet 320px < screen > 920px               */
+/* below, overflow hidden carousel = **********       */
+
+/*<-------------- container = 5 div x 320px --------->*/
+/***DIV1***|---DIV2---|---DIV3---|---DIV4---|***DIV5***/
+/*              |------- carousel ------|             */
+/*              |------- 2 x 320 -------|             */
+/****|**********|---IMG3----|---IMG4----|**********|***/
+/*         carousel justify center in container       */
+/*       THEN img position relative LEFT = -160px     */
+
+@media screen and ( max-width: 960px  )
+    {   
+        .carousel               { width: 640px; }
+        div.carousel>div>img    { left: -160px; } 
+    }
+
+/* --------------------------------------------------------------------------------------- */
+/* RESPONSIVE CAROUSEL FOR MOBILE */
+/* --------------------------------------------------------------------------------------- */
+/* @media mobile < 640px                              */
+/* below, overflow hidden carousel = **********       */
+
+/*<-------------- container = 5 div x 320px --------->*/
+/***DIV1***|---DIV2---|---DIV3---|---DIV4---|***DIV5***/
+/*                    | carousel |                    */
+/*                    |  320px   |                    */
+/**********|**********|---IMG3---|**********|**********/
+/*         carousel justify center in container       */
+/*         img position relative with left = 0        */
+
+@media screen and   ( max-width: 640px  )
+    {   
+        .carousel               { width: 320px; }
+        div.carousel>div>img    { left: 0px; } 
+    }
+
+/* --------------------------------------------------------------------------------------- */
 /***** SECTION MESSAGE PRIVE *****/
+/* --------------------------------------------------------------------------------------- */
 section.messagePrive>p
     {
         font-family: 'Playfair', Times, serif;
@@ -180,15 +248,16 @@ section.messagePrive>p
         width: 70%;
         margin: auto;
     }
-
+/* --------------------------------------------------------------------------------------- */
 /***** SECTION PROMO *****/
+/* --------------------------------------------------------------------------------------- */
 section#promo
     {
         width: 100%;        
         height: auto;
         padding: 75px 0;
         background-color: #056070;
-        background: url('LOGOANDPICS/geometric.jpg');
+        background: url('picsMain/geometric.jpg');
         background-position: center;
         background-attachment: fixed;
         background-repeat: no-repeat;
@@ -227,8 +296,9 @@ section#promo>span
         color: rgb(0, 0, 0);
     }
 
-
+/* --------------------------------------------------------------------------------------- */
 /***** MENU NAV PRESTATIONS ET TARIFS *****/
+/* --------------------------------------------------------------------------------------- */
 section#navMenuTarifs
     {
         display: flex;
@@ -245,12 +315,9 @@ section#navMenuTarifs>div
         color: rgba(238, 238, 238,0.75);
 
     }
-
-
-
-
-
+/* --------------------------------------------------------------------------------------- */
 /***** GEOLOCALISATION & COORDONNEES *****/
+/* --------------------------------------------------------------------------------------- */
 #geolocalisation
     {
         display: flex;   
@@ -275,7 +342,9 @@ section#navMenuTarifs>div
         padding: 0px 15px ;
     }
 
+/* --------------------------------------------------------------------------------------- */
 /***** FORMULAIRE *****/
+/* --------------------------------------------------------------------------------------- */
 input
     {
         height: 35px;
@@ -309,7 +378,7 @@ form
         width: 100%;        
         height: 600px;
         background-color: #0f0f0f;
-        background-image: url('LOGOANDPICS/PicHommeTelephone.jpg');
+        background-image: url('picsMain/PicHommeTelephone.jpg');
         background-position: center;
         background-attachment: fixed;
         background-size: cover;
@@ -337,26 +406,27 @@ section.formContainer>div
         font-weight: normal;
     }
 
-
-    /***** FOOTER *****/
+/* --------------------------------------------------------------------------------------- */
+/***** FOOTER *****/
+/* --------------------------------------------------------------------------------------- */
 footer#credits
     {
         background-color: #0f0f0f;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        
     }
 div.clippath
-    {
-        
+    { 
         width: 100%;
         height: 300px;
         clip-path: polygon(0% 0%, 70% 50%, 100% 0%);
         background-color: #056070;   
     }
-    
+
+/* --------------------------------------------------------------------------------------- */
 /***** SECTION FOOTER INFOS *****/
+/* --------------------------------------------------------------------------------------- */
 div.containerClipPath
 {
     position: relative;
@@ -390,7 +460,9 @@ section.footerInfos>div:nth-child(4)
         width: 10%;
     }
 
+/* --------------------------------------------------------------------------------------- */
 /***** FOOTER MENU *****/
+/* --------------------------------------------------------------------------------------- */
 div.separateur
     {
     padding: 50px 250px;
@@ -422,7 +494,9 @@ section.footerMenu>ul>li>a:hover
         transition: 0.3s;
     }
 
+/* --------------------------------------------------------------------------------------- */
 /***** FOOTER LIENS EXT *****/
+/* --------------------------------------------------------------------------------------- */
 
 section.footerLiensExt
     {
@@ -458,32 +532,33 @@ div.footerLiensExtListe>ul>li>a:hover
         transition: 0.3s;
     }
 
+/* --------------------------------------------------------------------------------------- */
 /***** FOOTER COPYRIGHT *****/
+/* --------------------------------------------------------------------------------------- */
 div.footerCopyright
-{
-    
-    display: flex;   
-    flex-direction: row; 
-    justify-content: center;
-    align-items: flex-end;
-    background-color: #056070;
-    margin-top: 50px;
-    margin-bottom: -300px;
-    
-}
+    {
+        display: flex;   
+        flex-direction: row; 
+        justify-content: center;
+        align-items: flex-end;
+        background-color: #056070;
+        margin-top: 50px;
+        margin-bottom: -300px;
+    }
 div.footerCopyright>p,
 div.footerCopyright>h2
-{
-    
-    font-family: 'Andika', serif;
-    font-size: 1rem;
-    font-weight: lighter;
-    color: rgba(238, 238, 238,0.75);
-    text-align: center;
-    padding: 10px 0;
-}
+    {
+        font-family: 'Andika', serif;
+        font-size: 1rem;
+        font-weight: lighter;
+        color: rgba(238, 238, 238,0.75);
+        text-align: center;
+        padding: 10px 0;
+    }
 
+/* --------------------------------------------------------------------------------------- */
 /***** RETOUR MENU *****/
+/* --------------------------------------------------------------------------------------- */
 div.scrollMenu
     {
         position: fixed;
@@ -500,5 +575,4 @@ div.scrollMenu>a
         text-decoration: none;   
         color: rgba(238, 238, 238,0.75);
         font-size: 1rem;
-        
     }
